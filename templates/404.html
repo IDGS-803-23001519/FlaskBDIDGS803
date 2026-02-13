@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Página no encontrada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(circle at center, #0f0f0f 0%, #000000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 140px;
+            letter-spacing: 10px;
+            position: relative;
+            color: #ff003c;
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 3px 3px #00f0ff; }
+            20% { text-shadow: -3px -3px #ff00ff; }
+            40% { text-shadow: 3px -3px #00ffcc; }
+            60% { text-shadow: -3px 3px #ff003c; }
+            80% { text-shadow: 3px 3px #00f0ff; }
+            100% { text-shadow: -3px -3px #ff00ff; }
+        }
+
+        h2 {
+            margin-top: -20px;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        p {
+            margin-top: 15px;
+            opacity: 0.6;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            border: 1px solid #ff003c;
+            color: #ff003c;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.4s ease;
+        }
+
+        a:hover {
+            background-color: #ff003c;
+            color: #000;
+            box-shadow: 0 0 15px #ff003c;
+        }
+
+        /* Efecto partículas sutil */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(#ffffff11 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: move 20s linear infinite;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-100px, -100px); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>ERROR · PÁGINA NO ENCONTRADA</h2>
+        <p>La ruta que intentas acceder no existe o fue eliminada.</p>
+
+    </div>
+</body>
+</html>
