@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+
+
+<div class="flex justify-center mt-10">
+    <div class="w-full max-w-md bg-neutral-primary shadow-lg rounded-base p-6">
+
+        <h2 class="text-xl font-semibold text-heading mb-6 text-center">
+            Detalles del Alumno
+        </h2>
+
+        <div class="space-y-4">
+            <div>
+                <p class="text-sm text-body">Nombre</p>
+                <p class="font-medium text-heading">{{ nombre }}</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-body">Apellido</p>
+                <p class="font-medium text-heading">{{ apaterno }}</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-body">Email</p>
+                <p class="font-medium text-heading">{{ email }}</p>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="{{ url_for('index') }}">
+                Regresar
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
