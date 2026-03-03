@@ -8,12 +8,30 @@ class UseForm(Form):
     nombre=StringField('nombre',[
         validators.DataRequired(message='El campo es requerido'),
         validators.length(min=4,max=20,message='Ingresae min=4 max=20')])
-    apaterno=StringField('apaterno',[
+    apellidos=StringField('apellidos',[
         validators.DataRequired(message='El campo es requerido')])
     email=EmailField('Correo',[
         validators.DataRequired(message='El campo es requerido'),
-        validators.Email(message='Ingrese un correo valido')
+        validators.Email(message='Ingrese un correo valido')])
+    telefono=StringField('telefono',[
+        validators.DataRequired(message='El campo es requerido')
     ])
+
+class MaestroForm(Form):
+    matricula=IntegerField('id')
+    nombre=StringField('nombre',[
+        validators.DataRequired(message='El campo es requerido'),
+        validators.length(min=4,max=20,message='Ingresae min=4 max=20')])
+    apellidos=StringField('apellidos',[
+        validators.DataRequired(message='El campo es requerido')])
+    especialidad=EmailField('especialidad',[
+        validators.DataRequired(message='El campo es requerido'),
+        validators.Email(message='Ingrese un correo valido')])
+    email=StringField('email',[
+        validators.DataRequired(message='El campo es requerido')
+    ])
+
+    
 
 
     

@@ -1,2 +1,4 @@
 static
 .env
+migrations
+maestros

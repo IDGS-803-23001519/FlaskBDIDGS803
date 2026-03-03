@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block container %}
 
-
 <div class="relative overflow-x-auto">
-<a href="Alumnos" class="font-medium text-fg-brand hover:underline">Alumnos</a>
+
+<a href="Alumnos" 
+   class="inline-block px-4 py-2 mb-4 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition duration-200">
+   Alumnos
+</a>
 
     <table class="w-full text-sm text-left rtl:text-right text-body">
         
@@ -13,10 +16,13 @@
                     NOMBRE
                 </th>
                 <th scope="col" class="px-6 py-3 font-semibold">
-                    APATERNO
+                    APELLIDOS
                 </th>
                 <th scope="col" class="px-6 py-3 font-semibold">
                     CORREO
+                </th>
+                <th scope="col" class="px-6 py-3 font-semibold">
+                    TELEFONO
                 </th>
                 <th scope="col" class="px-6 py-3 font-semibold">
                     EDITAR
@@ -29,20 +35,44 @@
                 </th>
             </tr>
         </thead>
+
         {%for alum in alumno%}
             <tr class="bg-neutral-primary"></tr>
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
                     {{ alum.nombre }}</th>
-                <td class="px-6 py-4">{{ alum.aPaterno }}</td>
+                <td class="px-6 py-4">{{ alum.apellidos }}</td>
                 <td class="px-6 py-4">{{ alum.email }}</td>
+                <td class="px-6 py-4">{{ alum.telefono }}</td>
+
                 <td class="px-6 py-4">
-                    <a href="modificar?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">EDITAR</a>
+                    <a href="modificar?id={{ alum.id }}"
+                       class="text-white bg-brand box-border border border-transparent 
+                       hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
+                       shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 
+                       focus:outline-none">
+
+                        EDITAR
+                    </a>
                 </td>
+
                 <td class="px-6 py-4">
-                    <a href="detalles?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">DETALLES</a>
+                    <a href="detalles?id={{ alum.id }}"
+                        class="text-white bg-success box-border border border-transparent 
+                        hover:bg-success-strong focus:ring-4 focus:ring-success-medium 
+                        shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 
+                        focus:outline-none">
+                        DETALLES
+                    </a>
                 </td>
+
                 <td class="px-6 py-4">
-                    <a href="eliminar?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">ELIMINAR</a>
+                    <a href="eliminar?id={{ alum.id }}"
+                        class="text-white bg-danger box-border border border-transparent 
+                        hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
+                        shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 
+                        focus:outline-none">
+                        ELIMINAR
+                    </a>
                 </td>
                 
                 </th>
@@ -50,8 +80,5 @@
 
     </table>
 </div>
-
-
-
 
 {%endblock%}
