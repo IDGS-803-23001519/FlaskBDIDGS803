@@ -18,7 +18,7 @@ class UseForm(Form):
     ])
 
 class MaestroForm(Form):
-    matricula=IntegerField('id')
+    matricula=IntegerField('matricula')
     nombre=StringField('nombre',[
         validators.DataRequired(message='El campo es requerido'),
         validators.length(min=4,max=20,message='Ingresae min=4 max=20')])
