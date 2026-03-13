@@ -1,0 +1,69 @@
+{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+
+<div class="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div class="text-center mb-6">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+            <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">¿Eliminar Maestro?</h3>
+        <p class="text-sm text-gray-500">
+            Esta acción eliminará el maestro. Esta operación no se puede deshacer.
+        </p>
+    </div>
+
+<form action="" method="POST" novalidate class="max-w-sm mx-auto">
+   {{ form.csrf_token }}
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+<div class="mb-5">
+     {{ macros.campoNuevo(form.matricula, class="bg-neutral-secondary-medium
+     border border-default-medium text-heading text-sm rounded-base
+     focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+     placeholder:text-body", readonly="readonly") }}
+</div>
+<div class="mb-5">
+     {{ macros.campoNuevo(form.nombre, class="bg-neutral-secondary-medium
+     border border-default-medium text-heading text-sm rounded-base
+     focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+     placeholder:text-body", readonly="readonly") }}
+</div>
+<div class="mb-5">
+     {{ macros.campoNuevo(form.apellidos, class="bg-neutral-secondary-medium
+     border border-default-medium text-heading text-sm rounded-base
+     focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+     placeholder:text-body", readonly="readonly") }}
+</div>
+<div class="mb-5">
+     {{ macros.campoNuevo(form.especialidad, class="bg-neutral-secondary-medium border
+     border-default-medium text-heading text-sm rounded-base focus:ring-brand
+     focus:border-brand block w-full px-3 py-2.5 shadow-xs
+     placeholder:text-body", readonly="readonly") }}
+</div>
+<div class="mb-5">
+     {{ macros.campoNuevo(form.email, class="bg-neutral-secondary-medium border
+     border-default-medium text-heading text-sm rounded-base focus:ring-brand
+     focus:border-brand block w-full px-3 py-2.5 shadow-xs
+     placeholder:text-body", readonly="readonly") }}
+</div>
+<div class="flex gap-4 mt-6">
+    <button
+        type="submit"
+        class="w-full text-white bg-danger box-border border border-transparent 
+                hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
+                shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 
+                focus:outline-none">
+        Eliminar
+    </button>
+</div>
+    <div class="flex justify-center mt-3">
+    <a href="{{ url_for('maestros.listado_maestros') }}" 
+       class="text-sm text-gray-500 hover:text-gray-700 transition">
+        Cancelar
+    </a>
+    </div>
+    </form>
+</div>
+
+
+{% endblock %}

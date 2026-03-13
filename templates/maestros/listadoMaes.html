@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="relative overflow-x-auto">
+
+    <a href="Maestro"
+        class="inline-flex items-center gap-2 px-4 py-2 mb-4 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition duration-200">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A9 9 0 1118.88 6.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+
+        Maestros
+    </a>
+
+    <table class="w-full text-sm text-left rtl:text-right text-body border border-gray-300 rounded-lg overflow-hidden">
+
+        <thead class="text-sm text-heading border-b border-gray-300">
+            <tr>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    MATRICULA
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    NOMBRE
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    APELLIDOS
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    ESPECIALIDAD
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    EMAIL
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    EDITAR
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    DETALLES
+                </th>
+
+                <th class="px-6 py-3 font-semibold">
+                    ELIMINAR
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {%for maes in maestros%}
+
+            <tr class="bg-neutral-primary border-b border-gray-200">
+
+                <td class="px-6 py-4 border-r border-gray-200">
+                    {{ maes.matricula }}
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+                    {{ maes.nombre }}
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+                    {{ maes.apellidos }}
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+                    {{ maes.especialidad }}
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+                    {{ maes.email }}
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+
+                    <a href="modificarMaes?matricula={{ maes.matricula }}"
+                        class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5h2m-1 0v14m7-7H5" />
+                        </svg>
+
+                        EDITAR
+                    </a>
+
+                </td>
+
+                <td class="px-6 py-4 border-r border-gray-200">
+
+                    <a href="detallesMaes?matricula={{ maes.matricula }}"
+                        class="inline-flex items-center gap-2 text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+
+                        DETALLES
+                    </a>
+
+                </td>
+
+                <td class="px-6 py-4">
+
+                    <a href="eliminarMaes?matricula={{ maes.matricula }}"
+                        class="inline-flex items-center gap-2 text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 7h12M9 7V4h6v3m-9 0l1 12h8l1-12" />
+                        </svg>
+
+                        ELIMINAR
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {%endfor%}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
