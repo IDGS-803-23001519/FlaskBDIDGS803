@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="relative overflow-x-auto">
+
+    <a href="{{ url_for('alumnos.alumnos') }}"
+        class="inline-flex items-center gap-2 px-4 py-2 mb-4 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition duration-200">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18" />
+        </svg>
+
+        Alumnos
+    </a>
+
+    <table class="w-full text-sm text-left rtl:text-right text-body border border-gray-300 rounded-lg overflow-hidden">
+
+        <thead class="text-sm text-heading border-b border-gray-300">
+            <tr>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">NOMBRE</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">APELLIDOS</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">CORREO</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">TELEFONO</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">CURSOS</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">EDITAR</th>
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">DETALLES</th>
+                <th class="px-6 py-3 font-semibold">ELIMINAR</th>
+            </tr>
+        </thead>
+
+        {%for alum in alumno%}
+
+        <tr class="bg-neutral-primary border-b border-gray-200">
+
+            <th class="px-6 py-4 font-medium text-heading whitespace-nowrap border-r border-gray-200">
+                {{ alum.nombre }}
+            </th>
+
+            <td class="px-6 py-4 border-r border-gray-200">{{ alum.apellidos }}</td>
+            <td class="px-6 py-4 border-r border-gray-200">{{ alum.email }}</td>
+            <td class="px-6 py-4 border-r border-gray-200">{{ alum.telefono }}</td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('alumnos.cursos_alumno', id=alum.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6l-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h5l2-2m0-12l2-2h5a2 2 0 012 2v12a2 2 0 01-2 2h-5l-2-2" />
+                    </svg>
+
+                    VER CURSOS
+                </a>
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('alumnos.modificar', id=alum.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 5h2m-1 0v14m7-7H5" />
+                    </svg>
+
+                    EDITAR
+                </a>
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('alumnos.detalles', id=alum.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+
+                    DETALLES
+                </a>
+            </td>
+
+            <td class="px-6 py-4">
+                <a href="{{ url_for('alumnos.eliminar', id=alum.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 7h12M9 7V4h6v3m-9 0l1 12h8l1-12" />
+                    </svg>
+
+                    ELIMINAR
+                </a>
+            </td>
+
+        </tr>
+
+        {%endfor%}
+
+    </table>
+</div>
+
+{%endblock %}

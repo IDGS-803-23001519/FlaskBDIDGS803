@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="relative overflow-x-auto">
+
+    <div class="flex gap-4 mb-4">
+        <a href="{{ url_for('cursos.curso') }}"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition duration-200">
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+
+            Nuevo Curso
+        </a>
+    </div>
+
+    <table class="w-full text-sm text-left rtl:text-right text-body border border-gray-300 rounded-lg overflow-hidden">
+
+        <thead class="text-sm text-heading border-b border-gray-300">
+            <tr>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    NOMBRE DEL CURSO
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    DESCRIPCIÓN
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    MAESTRO
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    ALUMNOS
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    EDITAR
+                </th>
+
+                <th class="px-6 py-3 font-semibold border-r border-gray-200">
+                    DETALLES
+                </th>
+
+                <th class="px-6 py-3 font-semibold">
+                    ELIMINAR
+                </th>
+
+            </tr>
+        </thead>
+
+        {% for curso in cursos %}
+
+        <tr class="bg-neutral-primary border-b border-gray-200">
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                {{ curso.nombre }}
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                {{ curso.descripcion[:50] }}{% if curso.descripcion|length > 50 %}...{% endif %}
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                {% if curso.maestro %}
+                {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                {% else %}
+                No asignado
+                {% endif %}
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('cursos.alumnos_por_curso', curso_id=curso.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-1a4 4 0 00-5-3.87M9 20H4v-1a4 4 0 015-3.87m0-4a4 4 0 110-8 4 4 0 010 8zm8 4v-1a4 4 0 00-3-3.87" />
+                    </svg>
+
+                    Ver Alumnos 
+                </a>
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('cursos.modificarCurso', id=curso.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 5h2m-1 0v14m7-7H5" />
+                    </svg>
+
+                    EDITAR
+                </a>
+            </td>
+
+            <td class="px-6 py-4 border-r border-gray-200">
+                <a href="{{ url_for('cursos.detalles', id=curso.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+
+                    DETALLES
+                </a>
+            </td>
+
+            <td class="px-6 py-4">
+                <a href="{{ url_for('cursos.eliminarCurso', id=curso.id) }}"
+                    class="inline-flex items-center gap-2 text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 7h12M9 7V4h6v3m-9 0l1 12h8l1-12" />
+                    </svg>
+
+                    ELIMINAR
+                </a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

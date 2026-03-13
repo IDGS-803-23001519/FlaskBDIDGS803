@@ -1,4 +1,36 @@
-{% extends "layout.html" %} {% block container %}
+{% extends "layout.html" %}
 
-<h2>Bienvenido</h2>
-{%endblock%}
+{% block container %}
+
+<style>
+.dashboard-container{
+    text-align:center;
+    padding:40px;
+}
+
+.dashboard-title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.dashboard-subtitle{
+    color:#666;
+    margin-bottom:40px;
+}
+</style>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-title">
+        Bienvenido al Sistema Académico
+    </div>
+
+    <div class="dashboard-subtitle">
+        Administra maestros, alumnos y cursos.
+    </div>
+
+
+</div>
+
+{% endblock %}

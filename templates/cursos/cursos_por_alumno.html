@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-4xl mx-auto">
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ alumno.nombre }} {{ alumno.apellidos }}</h2>
+        <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Email:</p>
+            <p class="font-semibold">{{ alumno.email }}</p>
+            <p class="text-sm text-gray-600 mt-2">Teléfono:</p>
+            <p class="font-semibold">{{ alumno.telefono }}</p>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+            Cursos Inscritos ({{ cursos|length }})
+        </h3>
+
+        {% if cursos %}
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-4 py-2">ID</th>
+                        <th class="px-4 py-2">Nombre del Curso</th>
+                        <th class="px-4 py-2">Descripción</th>
+                        <th class="px-4 py-2">Maestro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for curso in cursos %}
+                    <tr class="border-t hover:bg-gray-50">
+                        <td class="px-4 py-2">{{ curso.id }}</td>
+                        <td class="px-4 py-2 font-medium">{{ curso.nombre }}</td>
+                        <td class="px-4 py-2">{{ curso.descripcion[:50] }}{% if curso.descripcion|length > 50 %}...{% endif %}</td>
+                        <td class="px-4 py-2">
+                            {% if curso.maestro %}
+                                {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+                            {% else %}
+                                No asignado
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-gray-500 italic text-center py-8">Este alumno no está inscrito en ningún curso</p>
+        {% endif %}
+
+        <div class="flex justify-center mt-6">
+            <a href="{{ url_for('alumnos.index') }}" 
+               class="inline-block text-white bg-brand box-border border border-transparent 
+                    hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
+                    shadow-xs font-medium leading-5 rounded-full text-sm px-6 py-2.5 
+                    focus:outline-none transition">
+                Regresar a Alumnos
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

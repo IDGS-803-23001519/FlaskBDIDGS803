@@ -7,7 +7,7 @@
      {{ macros.campoNuevo(form.id, class="bg-neutral-secondary-medium
      border border-default-medium text-heading text-sm rounded-base
      focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
-     placeholder:text-body") }}
+     placeholder:text-body", readonly="readonly") }}
 </div>
 <div class="mb-5">
      {{ macros.campoNuevo(form.nombre, class="bg-neutral-secondary-medium
@@ -42,7 +42,7 @@
         focus:outline-none">
         Actualizar
     </button>
-    <a href="{{ url_for('index') }}" 
+    <a href="{{ url_for('alumnos.index') }}" 
        class="inline-block text-white bg-danger box-border border border-transparent 
             hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium 
             shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 
